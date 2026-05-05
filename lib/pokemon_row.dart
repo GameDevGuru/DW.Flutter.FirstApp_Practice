@@ -16,39 +16,57 @@ class PokemonRow extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.all(8.0),
-      child: Row(
-        children: [
-          Expanded(
-            flex: 1,
-            child: imageUrl != null
-              ? Image.network(imageUrl!)
-              : const FlutterLogo(),
-          ),
-          Expanded(
-            flex: 2,
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(
-                  name,
-                  style: Theme.of(context).textTheme.headlineLarge,
-                ),
-                const SizedBox(height: 10),
-                Text(
-                  number.toString(),
-                  style: Theme.of(context).textTheme.bodyMedium,
-                ),
-                const SizedBox(height: 10),
-                Text(
-                  type.join(', '),
-                  style: Theme.of(context).textTheme.bodySmall,
-                )
-              ],
+    return Container(
+      padding: const EdgeInsets.all(0.0),
+      decoration: BoxDecoration(
+        border: Border.all(
+          color: Colors.black,
+          width: 2.0
+        ),        
+      ),
+      child: IntrinsicHeight(
+        child: Row(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: [
+            Expanded(
+              flex: 1,
+              child: imageUrl != null
+                ? Image.network(imageUrl!)
+                : Image.asset('assets/images/pokemon_placeholder.png'),
             ),
-          ),
-        ],
+            Expanded(
+              flex: 2,
+              child: Container(
+                padding: const EdgeInsets.only(left: 30),
+                decoration: BoxDecoration(
+                  border: Border(
+                    left: BorderSide(color: Colors.green, width: 4.0)
+                  ),
+                ),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.stretch,
+                  children: [                    
+                    const SizedBox(height: 10),
+                    Text(
+                      name,
+                      style: Theme.of(context).textTheme.headlineLarge,
+                    ),
+                    const SizedBox(height: 10),
+                    Text(
+                      number.toString(),
+                      style: Theme.of(context).textTheme.bodyMedium,
+                    ),
+                    const SizedBox(height: 10),
+                    Text(
+                      type.join(', '),
+                      style: Theme.of(context).textTheme.bodySmall,
+                    )
+                  ],
+                ),
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }
