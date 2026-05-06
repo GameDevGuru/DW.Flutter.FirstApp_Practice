@@ -31,6 +31,7 @@ class _PokedexState extends State<PokedexPage> {
           id
           number
           name
+          imageUrl
           pokemonType {
             id
             name
